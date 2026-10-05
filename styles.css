@@ -102,7 +102,7 @@ body {
   padding: 0.9em 0;
   text-align: center;
   text-wrap: pretty;
-  hyphens: auto;
+  hyphens: manual;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -130,6 +130,22 @@ body {
   vertical-align: 0.35em;
 }
 .run .snip:last-child::after { content: none; }
+
+/* every line of copy is struck through, like an editor's cut.
+   Thickness scales with each kind; red pen on ink, ink on the red billboards. */
+.snip__text {
+  text-decoration-line: line-through;
+  text-decoration-color: var(--shout);
+  text-decoration-thickness: max(1.5px, 0.07em);
+  text-decoration-skip-ink: none;
+}
+.snip--billboard .snip__text {
+  text-decoration-color: var(--ink);
+  text-decoration-thickness: 0.09em;
+}
+.snip--paragraph .snip__text,
+.snip--social .snip__text { text-decoration-thickness: 1.5px; }
+.snip__break { text-decoration: none; }
 
 /* display kinds never hyphenate */
 .snip--headline, .snip--tagline, .snip--billboard { hyphens: manual; }
